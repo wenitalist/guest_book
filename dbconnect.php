@@ -21,9 +21,3 @@ try {
 } catch (\PDOException $e) {
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
-
-//$stmt = $pdo->query('SELECT * FROM posts');
-//$data = $stmt->fetchAll();
-
-//$stmt = $pdo->query('SELECT title, content, date_of_public, author FROM posts WHERE id = 1');
-//$data = $stmt->fetchAll();
