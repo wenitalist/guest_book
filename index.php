@@ -26,16 +26,31 @@
             margin-top: 1px;
             margin-bottom: 6px;
         }
+        .form {
+            border: solid 2px black;
+            margin: auto;
+        }
     </style>
 </head>
 
 <body>
-<?php
-    $id = 0;
+<div class="form">
+    <form method="POST" action="">
+        <input name="name" type="text" placeholder="Имя"/>
+        <input name="text" type="text" placeholder="Текст"/>
+        <input type="submit" value="Отправить"/>
+    </form>
+</div>
+<div class="main">
+    <?php
     global $pdo;
-    $stmt = $pdo->query('SELECT * FROM posts WHERE id = 1');
-    $data = $stmt->fetchAll();
-    echo($data[0]->title);
-?>
+    $result = $pdo->query("SELECT * FROM posts");
+    $count = $result->rowCount();
+    for ($q = 1; $q <= $count; $q++)
+    {
+        include ('post.php');
+    }
+    ?>
+</div>
 </body>
 </html>
