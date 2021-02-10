@@ -1,13 +1,15 @@
 <?php
+    session_start();
     include ('dbconnect.php');
     include ('add.php');
+    include ('script_authorization.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
-    <title>guest_book</title>
+    <title>Гостевая книга</title>
     <style>
         .main {
             border: solid 2px black;
@@ -44,10 +46,24 @@
             margin: 3px;
             text-align: right;
         }
+        .entry {
+            margin: 3px;
+            display: inline-block;
+            float: right;
+        }
+        .admin_panel {
+
+        }
     </style>
 </head>
 
 <body>
+<div class="entry">
+    <?php
+
+    ?>
+    <a href="authorization.php">Войти</a>
+</div>
 <div class="form_div">
     <h1 class="np">Оставить запись</h1>
     <hr>
@@ -66,6 +82,17 @@
     for ($q = 1; $q <= $count; $q++)
     {
         include ('post.php');
+    }
+    ?>
+</div>
+<div class="admin_panel">
+    <?php
+    global $data_aut;
+    global $type;
+
+    if ($_SESSION["is_auth"] == true && $_SESSION["type"] == "admin")
+    {
+        include ("admin_panel.php");
     }
     ?>
 </div>
