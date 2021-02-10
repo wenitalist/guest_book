@@ -16,19 +16,6 @@
             margin-right: auto;
             margin-top: 10px;
         }
-        .addl {
-            border: 4px double blue;
-            margin: 3px;
-        }
-        .text {
-            margin: 3px;
-        }
-        .date {
-            text-align: right;
-            margin-right: 3px;
-            margin-top: 1px;
-            margin-bottom: 6px;
-        }
         .form_div {
             border: solid 2px black;
             margin: auto;

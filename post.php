@@ -1,3 +1,18 @@
+<style>
+    .addl {
+        border: 4px double blue;
+        margin: 3px;
+    }
+    .text {
+        margin: 3px;
+    }
+    .date {
+        text-align: right;
+        margin-right: 3px;
+        margin-top: 1px;
+        margin-bottom: 6px;
+    }
+</style>
 <div class="addl">
     <h2 class="text">
         <?php
