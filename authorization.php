@@ -1,6 +1,5 @@
 <?php
 include("script_authorization.php");
-
 ?>
 <!DOCTYPE html>
 <html lang="ru">

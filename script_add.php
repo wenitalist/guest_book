@@ -1,7 +1,7 @@
 <?php
 include ('dbconnect.php');
-if (isset($_POST['enter']) == true && isset($_POST['author']) && isset($_POST['title']) && isset($_POST['content'])) {
-    $author = $_POST['author'];
+if (isset($_POST['enter']) == true && isset($_POST['title']) && isset($_POST['content'])) {
+    $author = $_SESSION['login'];
     $title = $_POST['title'];
     $content = $_POST['content'];
     $date = date("Y-m-d");
