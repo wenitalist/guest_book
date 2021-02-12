@@ -17,20 +17,12 @@
         margin-top: 2%;
         margin-bottom: 2%;
     }
-    .form {
-        margin: auto;
-    }
     .p {
         margin: 3%;
     }
-    .input {
-        width: 100%;
-    }
 </style>
 <div class="admin_panel">
-        <h3 class="h3">Админ панель</h3>
-        <hr class="hr">
-        <form class="form">
-            <p class="p"><input type="submit" class="input" name="enter" required value="Удалить запись"/></p>
-        </form>
+    <h3 class="h3">Админ панель</h3>
+    <hr class="hr">
+    <p class="p"><a href="form_delete.php">Удалить запись</a></p>
 </div>
