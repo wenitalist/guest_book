@@ -2,7 +2,6 @@
     session_start();
     include ('dbconnect.php');
     include ('script_add.php');
-    include ('script_authorization.php');
     include ('exit.php');
 ?>
 

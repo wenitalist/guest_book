@@ -1,4 +1,5 @@
 <?php
+include("script_registration.php");
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -18,7 +19,7 @@
             text-align: center;
         }
         .submit {
-            width: 100px;
+            width: auto;
         }
         .enter {
             text-align: center;
@@ -32,9 +33,9 @@
 <body>
     <form method="POST" action="" class="main">
         <h1 class="field">Регистрация</h1>
-        <p class="field"><input name="login" type="text" maxlength="15" required placeholder="Имя пользователя"/></p>
-        <p class="field"><input name="password" type="password" maxlength="15" required placeholder="Пароль"/></p>
-        <p class="enter"><input type="submit" name="enter" class="submit" required value="Войти"/></p>
+        <p class="field"><input pattern="^[0-9a-z]+$" name="login_reg" type="text" maxlength="15" required placeholder="Имя пользователя"/></p>
+        <p class="field"><input pattern="^[0-9a-z]+$" name="password_reg" type="password" maxlength="15" required placeholder="Пароль"/></p>
+        <p class="enter"><input type="submit" name="enter_reg" class="submit" required value="Зарегистрироваться"/></p>
     </form>
     <div class="reg">
         <a href="authorization.php">Авторизироваться</a>--<a href="index.php">Вернуться на главную</a>

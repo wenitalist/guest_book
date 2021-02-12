@@ -19,7 +19,7 @@ include("script_authorization.php");
             text-align: center;
         }
         .submit {
-            width: 100px;
+            width: auto;
         }
         .enter {
             text-align: center;
@@ -33,8 +33,8 @@ include("script_authorization.php");
 <body>
     <form method="POST" action="" class="main">
         <h1 class="field">Авторизация</h1>
-        <p class="field"><input name="login" type="text" maxlength="15" required placeholder="Имя пользователя"/></p>
-        <p class="field"><input name="password" type="password" maxlength="15" required placeholder="Пароль"/></p>
+        <p class="field"><input name="login_auth" type="text" maxlength="15" required placeholder="Имя пользователя"/></p>
+        <p class="field"><input name="password_auth" type="password" maxlength="15" required placeholder="Пароль"/></p>
         <p class="enter"><input type="submit" name="enter_auth" class="submit" required value="Войти"/></p>
     </form>
     <div class="reg">
