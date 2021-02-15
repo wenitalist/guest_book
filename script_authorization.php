@@ -23,6 +23,6 @@ if (isset($_POST['enter_auth']) == true && isset($_POST['login_auth']) && isset(
         echo ("Неверный логин или пароль");
     }
 
-    header("Location: http://wenitalist.local/index.php");
+    header("Location: index.php");
     exit();
 }

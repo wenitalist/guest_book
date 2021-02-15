@@ -13,6 +13,6 @@ if (isset($_POST['enter_reg']) == true && isset($_POST['login_reg']) && isset($_
     $query = $pdo->prepare("INSERT INTO $table_reg (login, password, type) VALUES (:login, :password, :type)");
     $query->execute($data);
 
-    header("Location: http://wenitalist.local/index.php");
+    header("Location: index.php");
     exit();
 }
