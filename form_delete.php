@@ -12,6 +12,7 @@ $data = $stmt->fetchAll();
 </head>
 <body>
     <div>
+        <a href="index.php">Назад</a>
         <form method="POST" action="" class="select_table">
             <select name="tables_list">
                 <?php
@@ -21,7 +22,6 @@ $data = $stmt->fetchAll();
                 {
                     $name_t = strval($data[$q]->Tables_in_guest_book);
                     echo("<option  name='$name_t' value='$name_t'>$name_t</option>");
-                    //echo("<p><input type='submit' name='$name_t' class='submit' value='$name_t'/></p>");
                     $q++;
                 }
                 ?>
