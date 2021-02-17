@@ -1,50 +1,85 @@
 <style>
-    .td, .tr {
+    th, td, tr {
         border: 1px solid black;
         padding: 3px;
     }
     .table {
         border-collapse: collapse;
     }
+    .del_submit {
+        margin-left: auto;
+        float: left;
+    }
 </style>
 <?php
+include("script_delete.php");
+include("dbconnect.php");
 if (isset($_POST['table_selected']))
 {
     $selected_table = $_POST['tables_list'];
     global $pdo;
-    $n = 0;
 
-    $stmt = $pdo->query("SELECT * FROM $selected_table"); // Первый раз чтобы взять всю инфу с бд
-    $colcount = $stmt->columnCount(); // Кол-во столбцов в таблице
+    $stmt = $pdo->query("SELECT * FROM $selected_table");
+    //$colcount = $stmt->columnCount(); // Кол-во столбцов в таблице
     //$rows = $stmt->rowCount(); // Кол-во строк в таблице
-    $data = $stmt->fetchAll(PDO::FETCH_ASSOC); // Тут хранятся все записи
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $stmt = $pdo->query("SELECT * FROM $selected_table"); // Второй раз берет только названия столбцов
-    $column_names = $stmt->fetch(PDO::FETCH_ASSOC); // Тут только перввая строка из таблицы
-
-    echo("<table class='table'>");
-    echo("<tr class='tr'>"); // Тег строки таблицы
-    for ($k = 0; $k < $colcount; $k++) // Цикл делает заголовки к столбцам таблицы
+    echo("<form method='POST' action=''>");
+    if ($selected_table == "posts")
     {
-        $p = array_keys($column_names)[$k];
-        echo ("<td class='td'>$p</td>");
-    }
-    echo("</tr>");
-    while ($data[$n])
-    {
-        echo("<tr class='tr'>");
-        for ($k = 0; $k < $colcount; $k++)
+        echo("<table class='table'>");
+        echo("<tr>
+              <th>ID</th>
+              <th>Заголовок</th>
+              <th>Содержимое</th>
+              <th>Дата</th>
+              <th>Автор</th>
+              <th>Удаление</th>
+              </tr>");
+        $q = 1; // Для value checkbox
+        foreach ($data as $row)
         {
-            $b = ($data[$n])[$k]; // strval()
-            echo ("<td class='td'>$b</td>");
+            echo("<tr>
+                  <td>{$row['id']}</td>
+                  <td>{$row['title']}</td>
+                  <td>{$row['content']}</td>
+                  <td>{$row['date_of_public']}</td>
+                  <td>{$row['author']}</td>
+                  <td align='center'><input type='checkbox' name='checkbox_mass[]' value='$q'></td>
+                  </tr>");
+            $q++;
         }
-        $n++;
-        echo("</tr>");
+        echo("</table>");
     }
-    echo("</table>");
-    $vbn = $data[0];
-    var_dump($data);
-
+    if ($selected_table == "users")
+    {
+        echo("<table class='table'>");
+        echo("<tr>
+              <th>ID</th>
+              <th>Имя пользователя</th>
+              <th>Пароль</th>
+              <th>Тип</th>
+              <th>Удаление</th>
+              </tr>");
+        $q = 1; // Для value checkbox
+        foreach ($data as $row)
+        {
+            if ($row['type'] != "admin")
+            {
+                echo("<tr>
+                  <td>{$row['id']}</td>
+                  <td>{$row['login']}</td>
+                  <td>{$row['password']}</td>
+                  <td>{$row['type']}</td>
+                  <td align='center'><input type='checkbox' name='checkbox_mass[]' value='$q'></td>
+                  </tr>");
+            }
+            $q++;
+        }
+        echo("</table>");
+    }
+    echo("<p><input type='submit' name='delete_rows' class='del_submit' value='Удалить'/></p>");
+    echo("</form>");
 
     //header("Location: ".$_SERVER['HTTP_REFERER']);
     exit();
