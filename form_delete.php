@@ -16,7 +16,6 @@ $data = $stmt->fetchAll();
         <form method="POST" action="" class="select_table">
             <select name="tables_list">
                 <?php
-                global $data;
                 $q = 0;
                 while ($data[$q])
                 {

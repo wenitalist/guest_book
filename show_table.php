@@ -12,7 +12,6 @@
     }
 </style>
 <?php
-include("script_delete.php");
 include("dbconnect.php");
 if (isset($_POST['table_selected']))
 {
@@ -82,6 +81,8 @@ if (isset($_POST['table_selected']))
     echo("</form>");
 
     //header("Location: ".$_SERVER['HTTP_REFERER']);
-    exit();
 }
+$selected_table = $_POST['tables_list'];
+include("script_delete.php");
+exit();
 ?>
