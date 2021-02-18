@@ -6,8 +6,10 @@ if (isset($_POST['enter_auth']) == true && isset($_POST['login_auth']) && isset(
     $password_auth = $_POST['password_auth'];
 
     global $pdo;
-    $stmt = $pdo->query("SELECT * FROM users WHERE login='$login_auth' AND password='$password_auth'");
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE login=:login_auth AND password=:password_auth");
+    $stmt->execute(['login_auth' => $login_auth, 'password_auth' => $password_auth]);
     $data_aut = $stmt->fetchAll();
+
     if ($data_aut == true)
     {
         $type = $data_aut[0]->type;

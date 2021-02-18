@@ -24,5 +24,5 @@
 <div class="admin_panel">
     <h3 class="h3">Админ панель</h3>
     <hr class="hr">
-    <p class="p"><a href="form_delete.php">Удалить запись</a></p>
+    <p class="p"><a href="select_table.php">Удалить запись</a></p>
 </div>

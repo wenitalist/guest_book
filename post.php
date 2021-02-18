@@ -18,7 +18,8 @@
         <?php
         global $q;
         global $pdo;
-        $stmt = $pdo->query("SELECT title FROM posts WHERE id = $q");
+        $stmt = $pdo->prepare("SELECT title FROM posts WHERE id = :id");
+        $stmt->execute(['id' => $q]);
         $data = $stmt->fetchAll();
         echo($data[0]->title);
         ?>
@@ -28,7 +29,8 @@
         <?php
         global $q;
         global $pdo;
-        $stmt = $pdo->query("SELECT content FROM posts WHERE id = $q");
+        $stmt = $pdo->prepare("SELECT content FROM posts WHERE id = :id");
+        $stmt->execute(['id' => $q]);
         $data = $stmt->fetchAll();
         echo($data[0]->content);
         ?>
@@ -38,7 +40,8 @@
         <?php
         global $q;
         global $pdo;
-        $stmt = $pdo->query("SELECT author, date_of_public FROM posts WHERE id = $q");
+        $stmt = $pdo->prepare("SELECT author, date_of_public FROM posts WHERE id = :id");
+        $stmt->execute(['id' => $q]);
         $data = $stmt->fetchAll();
         $str_aut = ($data[0]->author);
         $str_aut .= " - ";
