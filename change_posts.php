@@ -50,7 +50,6 @@ echo("<tr>
       <th>Автор</th>
       <th>Удаление</th>
       </tr>");
-$q = 1; // Для value checkbox
 foreach ($data as $row)
 {
     echo("<tr>
@@ -59,9 +58,8 @@ foreach ($data as $row)
           <td>{$row['content']}</td>
           <td>{$row['date_of_public']}</td>
           <td>{$row['author']}</td>
-          <td align='center'><input type='checkbox' name='checkbox_mass[]' value='$q'></td>
+          <td align='center'><input type='checkbox' name='checkbox_mass[]' value='{$row['id']}'></td>
           </tr>");
-    $q++;
 }
 echo("</table>");
 echo("<input type='text' name='selected_table' value='posts' hidden/>");

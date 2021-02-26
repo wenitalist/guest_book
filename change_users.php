@@ -49,7 +49,6 @@ echo("<tr>
       <th>Тип</th>
       <th>Удаление</th>
       </tr>");
-$q = 1; // Для value checkbox
 foreach ($data as $row)
 {
     if ($row['type'] != "admin")
@@ -59,10 +58,9 @@ foreach ($data as $row)
               <td>{$row['login']}</td>
               <td>{$row['password']}</td>
               <td>{$row['type']}</td>
-              <td align='center'><input type='checkbox' name='checkbox_mass[]' value='$q'></td>
+              <td align='center'><input type='checkbox' name='checkbox_mass[]' value='{$row['id']}'></td>
               </tr>");
     }
-    $q++;
 }
 echo("</table>");
 echo("<input type='text' name='selected_table' value='users' hidden/>");

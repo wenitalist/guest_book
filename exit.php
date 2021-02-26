@@ -5,6 +5,8 @@
         {
                 $_SESSION = array();
                 session_destroy();
+                session_start();
+                $_SESSION["is_auth"] = false;
                 header("Location: ?is_exit=0");
                 exit();
         }

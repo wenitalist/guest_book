@@ -33,12 +33,12 @@ include("script_registration.php");
 <body>
     <form method="POST" action="" class="main">
         <h1 class="field">Регистрация</h1>
-        <p class="field"><input pattern="^[0-9a-z]+$" name="login_reg" type="text" maxlength="15" required placeholder="Имя пользователя"/></p>
-        <p class="field"><input pattern="^[0-9a-z]+$" name="password_reg" type="password" maxlength="15" required placeholder="Пароль"/></p>
+        <p class="field"><input pattern="^[0-9a-zA-Z]+$" name="login_reg" type="text" maxlength="15" required placeholder="Имя пользователя"/></p>
+        <p class="field"><input pattern="^[0-9a-zA-Z]+$" name="password_reg" type="password" maxlength="15" required placeholder="Пароль"/></p>
         <p class="enter"><input type="submit" name="enter_reg" class="submit" required value="Зарегистрироваться"/></p>
     </form>
     <div class="reg">
-        <a href="authorization.php">Авторизироваться</a>--<a href="index.php">Вернуться на главную</a>
+        <a href="authorization.php">Авторизоваться</a>--<a href="index.php">Вернуться на главную</a>
     </div>
 </body>
 </html>
