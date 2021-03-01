@@ -1,5 +1,6 @@
 <?php
 include ('dbconnect.php');
+session_start();
 if (isset($_POST['enter']) == true && isset($_POST['title']) && isset($_POST['content'])) {
     $author = $_SESSION['login'];
     $title = $_POST['title'];
@@ -13,6 +14,7 @@ if (isset($_POST['enter']) == true && isset($_POST['title']) && isset($_POST['co
     $query = $pdo->prepare("INSERT INTO $table (title, content, date_of_public, author) VALUES (:title, :content, :date, :author)");
     $query->execute($data);
 
+    $_SESSION["add_status"] = "yes";
     header("Location: ".$_SERVER['HTTP_REFERER']);
     exit();
 }

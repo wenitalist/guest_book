@@ -1,5 +1,5 @@
 <?php
-include("script_registration.php");
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -28,13 +28,21 @@ include("script_registration.php");
             text-align: center;
             margin-top: 1%;
         }
+        .reg_error {
+            color: red;
+            margin: auto;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <form method="POST" action="" class="main">
+    <form method="POST" action="/script_registration.php" class="main">
         <h1 class="field">Регистрация</h1>
         <p class="field"><input pattern="^[0-9a-zA-Z]+$" name="login_reg" type="text" maxlength="15" required placeholder="Имя пользователя"/></p>
         <p class="field"><input pattern="^[0-9a-zA-Z]+$" name="password_reg" type="password" maxlength="15" required placeholder="Пароль"/></p>
+        <?php
+        if ($_SESSION["reg_status"] == "no") {echo("<p class='reg_error'>Такое имя пользователя занято</p>"); $_SESSION["reg_status"] = "";}
+        ?>
         <p class="enter"><input type="submit" name="enter_reg" class="submit" required value="Зарегистрироваться"/></p>
     </form>
     <div class="reg">

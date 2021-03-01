@@ -28,13 +28,21 @@ session_start();
             text-align: center;
             margin-top: 1%;
         }
+        .auth_error {
+            color: red;
+            margin: auto;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <form method="POST" action="script_authorization.php" class="main">
+    <form method="POST" action="/script_authorization.php" class="main">
         <h1 class="field">Авторизация</h1>
         <p class="field"><input name="login_auth" type="text" maxlength="15" required placeholder="Имя пользователя"/></p>
         <p class="field"><input name="password_auth" type="password" maxlength="15" required placeholder="Пароль"/></p>
+        <?php
+        if ($_SESSION["auth_status"] == "no") {echo("<p class='auth_error'>Неправильный логин или пароль</p>"); $_SESSION["auth_status"] = "";}
+        ?>
         <p class="enter"><input type="submit" name="enter_auth" class="submit" required value="Войти"/></p>
     </form>
     <div class="reg">

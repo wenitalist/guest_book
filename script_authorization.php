@@ -20,6 +20,7 @@ if (isset($_POST['enter_auth']) == true && isset($_POST['login_auth']) && isset(
         $_SESSION["login"] = $login_auth;
         $_SESSION["type"] = $type;
         //$_SESSION["password"] = $password_auth;
+        $_SESSION["auth_status"] = "yes";
         header("Location: index.php");
         exit();
     }
@@ -27,7 +28,7 @@ if (isset($_POST['enter_auth']) == true && isset($_POST['login_auth']) && isset(
     {
         session_start();
         $_SESSION["is_auth"] = false;
-        $_SESSION["error_auth"] = "Неправильный логин или пароль";
+        $_SESSION["auth_status"] = "no";
         header("Location: ".$_SERVER['HTTP_REFERER']);
         exit();
     }

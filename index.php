@@ -1,12 +1,8 @@
 <?php
 session_start();
 include ('dbconnect.php');
-include ('script_add.php');
 include ('exit.php');
-if ($_SESSION["is_auth"] == NULL)
-{
-    $_SESSION["is_auth"] = false;
-}
+include ('filling_session.php');
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +36,9 @@ if ($_SESSION["is_auth"] == NULL)
             margin-top: 1px;
             margin-bottom: 6px;
         }
+        .reg {
+            margin-right: 100px;
+        }
     </style>
 </head>
 
@@ -54,15 +53,17 @@ if ($_SESSION["is_auth"] == NULL)
     }
     else
     {
-        echo ("<a href='authorization.php'>Войти</a>");
+        if ($_SESSION["reg_status"] == "yes")
+        {
+
+            $_SESSION["reg_status"] = "";
+        }
+        echo ("<a class='reg'></a><a href='authorization.php'>Войти</a>");
     }
     ?>
 </div>
 
 <?php
-global $data_aut;
-global $type;
-
 if ($_SESSION["is_auth"] == true && $_SESSION["type"] == "admin")
 {
     include ("admin_panel.php");
@@ -77,27 +78,30 @@ if (($_SESSION["is_auth"]) == true)
 ?>
 
 <?php
-echo("<div class='main'>");
 global $pdo;
 $result = $pdo->query("SELECT * FROM posts");
 $result->execute();
 $data = $result->fetchAll(PDO::FETCH_ASSOC);
-foreach($data as $row)
+if ($data != NULL)
 {
-    $str_aut = $row['author'];
-    $str_aut .= " - ";
-    $str_date = $row['date_of_public'];
-    $str_aut .= $str_date;
+    echo("<div class='main'>");
+    foreach($data as $row)
+    {
+        $str_aut = $row['author'];
+        $str_aut .= " - ";
+        $str_date = $row['date_of_public'];
+        $str_aut .= $str_date;
 
-    echo("<div class='addl'>
+        echo("<div class='addl'>
           <h2 class='text'>{$row['title']}</h2>
           <hr>
           <p class='text'>{$row['content']}</p>
           <hr>
           <p class='date'>$str_aut</p>
           </div>");
+    }
+    echo("</div>");
 }
-echo("</div>");
 ?>
 </body>
 </html>
